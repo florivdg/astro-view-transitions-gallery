@@ -14,4 +14,10 @@ const { imageName } = Astro.props
 const image = images[`/${imageName}`]
 ---
 
-<Image src={image()} alt={imageName} width={1600} densities={[1, 2]} />
+<Image
+  src={image()}
+  alt={imageName}
+  width={1600}
+  densities={[1, 2]}
+  transition:name={`/${imageName}`}
+/>

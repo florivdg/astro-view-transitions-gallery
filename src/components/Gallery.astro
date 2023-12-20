@@ -19,7 +19,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
               .replace(/\.(jpeg|jpg)$/, '')}
             width={400}
             densities={[1, 2]}
-            class:list={'object-cover object-center w-full h-full'}
+            transition:name={n}
           />
         </a>
       </li>
