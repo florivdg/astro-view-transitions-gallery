@@ -1,0 +1,10 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import FullImage from '../../components/FullImage.astro'
+
+const { imageName } = Astro.params
+---
+
+<Layout title="Welcome to Astro.">
+  <FullImage imageName={imageName!} />
+</Layout>

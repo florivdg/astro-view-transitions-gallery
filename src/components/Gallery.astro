@@ -1,0 +1,28 @@
+---
+import { Image } from 'astro:assets'
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/assets/images/*.{jpeg,jpg}',
+)
+---
+
+<ul class="grid gap-4 grid-cols-1 md:grid-cols-4 [grid-template-rows:masonry]">
+  {
+    Object.entries(images).map(([n, img]) => (
+      <li class="aspect-square">
+        <a href={`/detail${n}`}>
+          <Image
+            src={img()}
+            alt={n
+              .split('/')
+              .pop()!
+              .replace(/\.(jpeg|jpg)$/, '')}
+            width={400}
+            densities={[1, 2]}
+            class:list={'object-cover object-center w-full h-full'}
+          />
+        </a>
+      </li>
+    ))
+  }
+</ul>

@@ -1,0 +1,17 @@
+---
+import { Image } from 'astro:assets'
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/assets/images/*.{jpeg,jpg}',
+)
+
+interface Props {
+  imageName: string
+}
+
+const { imageName } = Astro.props
+
+const image = images[`/${imageName}`]
+---
+
+<Image src={image()} alt={imageName} width={1600} densities={[1, 2]} />
