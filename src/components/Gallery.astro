@@ -10,7 +10,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
   {
     Object.entries(images).map(([n, img]) => (
       <li>
-        <a href={`/detail${n}`}>
+        <a href={`/detail${n}`} class="block">
           <Image
             src={img()}
             alt={n
