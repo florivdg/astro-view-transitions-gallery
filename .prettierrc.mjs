@@ -5,5 +5,5 @@ export default {
   semi: false,
   singleQuote: true,
   printWidth: 80,
-  plugins: ['prettier-plugin-astro'],
+  plugins: ['prettier-plugin-astro', 'prettier-plugin-tailwindcss'],
 }

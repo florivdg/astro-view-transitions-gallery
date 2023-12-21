@@ -14,11 +14,13 @@ const { imageName } = Astro.props
 const image = images[`/${imageName}`]
 ---
 
-<Image
-  src={image()}
-  alt={imageName}
-  width={1600}
-  densities={[1, 2]}
-  class:list={'h-full w-auto mx-auto'}
-  transition:name={`/${imageName}`}
-/>
+<div class="flex h-dvh items-center justify-center">
+  <Image
+    src={image()}
+    alt={imageName}
+    width={1600}
+    densities={[1, 2]}
+    class="mx-auto h-auto max-h-full w-auto max-w-full"
+    transition:name={`/${imageName}`}
+  />
+</div>

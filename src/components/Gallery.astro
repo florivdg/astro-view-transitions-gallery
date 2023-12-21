@@ -6,10 +6,10 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 )
 ---
 
-<ul class="grid gap-4 grid-cols-1 md:grid-cols-4 [grid-template-rows:masonry]">
+<ul class="masonry py-8">
   {
     Object.entries(images).map(([n, img]) => (
-      <li class="aspect-square">
+      <li>
         <a href={`/detail${n}`}>
           <Image
             src={img()}
@@ -20,9 +20,29 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
             width={400}
             densities={[1, 2]}
             transition:name={n}
+            class="h-auto w-full"
           />
         </a>
       </li>
     ))
   }
 </ul>
+
+<style>
+  @supports (grid-template-rows: masonry) {
+    .masonry {
+      @apply grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
+      grid-template-rows: masonry;
+    }
+  }
+
+  @supports not (grid-template-rows: masonry) {
+    .masonry {
+      @apply columns-1 break-inside-avoid sm:columns-2 lg:columns-3 xl:columns-4;
+
+      & li {
+        @apply mb-4;
+      }
+    }
+  }
+</style>
